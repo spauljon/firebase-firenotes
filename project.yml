@@ -1,0 +1,35 @@
+name: FireNotes
+options:
+  bundleIdPrefix: com.paul
+  deploymentTarget:
+    iOS: "17.0"
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    from: "12.0.0"
+fileGroups:
+  - README.md
+  - CLAUDE.md
+  - firestore.rules
+  - firebase.json
+  - package.json
+targets:
+  FireNotes:
+    type: application
+    platform: iOS
+    sources:
+      - path: FireNotes
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.paul.firenotes
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_CFBundleDisplayName: FireNotes
+        SWIFT_VERSION: "5.0"
+        MARKETING_VERSION: "0.1"
+        CURRENT_PROJECT_VERSION: "1"
+    dependencies:
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseFirestore

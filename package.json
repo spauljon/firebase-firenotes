@@ -1,0 +1,9 @@
+{
+  "name": "firenotes",
+  "private": true,
+  "description": "Firebase CLI tooling for the FireNotes iOS app",
+  "scripts": {
+    "emulators": "firebase emulators:start",
+    "deploy:rules": "firebase deploy --only firestore:rules"
+  }
+}
