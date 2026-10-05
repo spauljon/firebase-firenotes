@@ -79,6 +79,21 @@ listener, and per-user security rules. Add notes, tap to toggle done, swipe to d
 Firebase console → Firestore Database → `users` → `<uid>` → `notes`. The uid is shown at
 the bottom of the app. Edits made in the console appear live in the app.
 
+## Local emulators
+
+Run the app against local Auth and Firestore emulators instead of the cloud project
+(needs Java 21+; the CLI downloads the emulator jars on first run):
+
+```bash
+npm run emulators            # Emulator UI at http://127.0.0.1:4000
+SIMCTL_CHILD_USE_EMULATORS=1 xcrun simctl launch booted <your-bundle-id>
+```
+
+Emulator mode is DEBUG-only and opt-in via the `USE_EMULATORS=1` environment variable
+(in Xcode: Edit Scheme → Run → Arguments → Environment Variables). It signs out any
+saved cloud session first, so the next normal launch gets a new anonymous uid. Emulator
+data is wiped when the emulators stop.
+
 ## Project layout
 
 - `FireNotes/FireNotesApp.swift`: calls `FirebaseApp.configure()`.
